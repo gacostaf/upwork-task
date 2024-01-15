@@ -33,27 +33,27 @@ public class StudentAttendanceController {
 	public ResponseEntity<StudentAttendance> getStudentAttendance(@PathVariable Integer id) {
 		try {
 			StudentAttendance studentAttendance = studentAttendanceService.getStudentAttendance(id);
-			return new ResponseEntity<StudentAttendance>(studentAttendance, HttpStatus.OK);
+			return new ResponseEntity<>(studentAttendance, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentAttendance>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveStudentAttendance(@RequestBody StudentAttendance studentAttendance) {
+	public ResponseEntity<StudentAttendance> saveStudentAttendance(@RequestBody StudentAttendance studentAttendance) {
 		studentAttendanceService.saveStudentAttendance(studentAttendance);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateStudentAttendance(@PathVariable Integer id, 
+	public ResponseEntity<StudentAttendance> updateStudentAttendance(@PathVariable Integer id, 
 										  @RequestBody StudentAttendance studentAttendance) {
 		try {
 			studentAttendance.setPkStudentAttendance(id);
 			studentAttendanceService.saveStudentAttendance(studentAttendance);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentAttendance>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

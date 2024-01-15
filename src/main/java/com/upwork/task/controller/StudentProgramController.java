@@ -33,27 +33,27 @@ public class StudentProgramController {
 	public ResponseEntity<StudentProgram> getStudentProgram(@PathVariable Integer id) {
 		try {
 			StudentProgram studentProgram = studentProgramService.getStudentProgram(id);
-			return new ResponseEntity<StudentProgram>(studentProgram, HttpStatus.OK);
+			return new ResponseEntity<>(studentProgram, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentProgram>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveStudentProgram(@RequestBody StudentProgram studentProgram) {
+	public ResponseEntity<StudentProgram> saveStudentProgram(@RequestBody StudentProgram studentProgram) {
 		studentProgramService.saveStudentProgram(studentProgram);
 		return new ResponseEntity<>(studentProgram, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateStudentProgram(@PathVariable Integer id, 
+	public ResponseEntity<StudentProgram> updateStudentProgram(@PathVariable Integer id, 
 										  @RequestBody StudentProgram studentProgram) {
 		try {
 			studentProgram.setPkStudentProgram(id);
 			studentProgramService.saveStudentProgram(studentProgram);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentProgram>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

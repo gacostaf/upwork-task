@@ -33,27 +33,27 @@ public class StudentTransactionController {
 	public ResponseEntity<StudentTransaction> getStudentTransaction(@PathVariable Integer id) {
 		try {
 			StudentTransaction studentTransaction = studentTransactionService.getStudentTransaction(id);
-			return new ResponseEntity<StudentTransaction>(studentTransaction, HttpStatus.OK);
+			return new ResponseEntity<>(studentTransaction, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentTransaction>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveStudentTransaction(@RequestBody StudentTransaction studentTransaction) {
+	public ResponseEntity<StudentTransaction> saveStudentTransaction(@RequestBody StudentTransaction studentTransaction) {
 		studentTransactionService.saveStudentTransaction(studentTransaction);
 		return new ResponseEntity<>(studentTransaction, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateStudentTransaction(@PathVariable Integer id, 
+	public ResponseEntity<StudentTransaction> updateStudentTransaction(@PathVariable Integer id, 
 										  @RequestBody StudentTransaction studentTransaction) {
 		try {
 			studentTransaction.setPkStudentTransaction(id);
 			studentTransactionService.saveStudentTransaction(studentTransaction);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentTransaction>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

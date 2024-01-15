@@ -33,27 +33,27 @@ public class HallController {
 	public ResponseEntity<Hall> getHall(@PathVariable Integer id) {
 		try {
 			Hall hall = hallService.getHall(id);
-			return new ResponseEntity<Hall>(hall, HttpStatus.OK);
+			return new ResponseEntity<>(hall, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Hall>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveHall(@RequestBody Hall hall) {
+	public ResponseEntity<Hall> saveHall(@RequestBody Hall hall) {
 		hallService.saveHall(hall);
 		return new ResponseEntity<>(hall, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateHall(@PathVariable Integer id, 
+	public ResponseEntity<Hall> updateHall(@PathVariable Integer id, 
 										  @RequestBody Hall hall) {
 		try {
 			hall.setPkHall(id);
 			hallService.saveHall(hall);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Hall>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

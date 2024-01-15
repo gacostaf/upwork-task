@@ -16,7 +16,7 @@ public class Student {
 	@Id
 	private int pkStudent;
 	private String idStudent;
-	private String Country;
-	private String Phone;
+	private String country;
+	private String phone;
 	private String fullName;
 }

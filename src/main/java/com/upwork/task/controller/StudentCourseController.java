@@ -33,27 +33,27 @@ public class StudentCourseController {
 	public ResponseEntity<StudentCourse> getStudentCourse(@PathVariable Integer id) {
 		try {
 			StudentCourse studentCourse = studentCourseService.getStudentCourse(id);
-			return new ResponseEntity<StudentCourse>(studentCourse, HttpStatus.OK);
+			return new ResponseEntity<>(studentCourse, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentCourse>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveStudentCourse(@RequestBody StudentCourse studentCourse) {
+	public ResponseEntity<StudentCourse> saveStudentCourse(@RequestBody StudentCourse studentCourse) {
 		studentCourseService.saveStudentCourse(studentCourse);
 		return new ResponseEntity<>(studentCourse, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateStudentCourse(@PathVariable Integer id, 
+	public ResponseEntity<StudentCourse> updateStudentCourse(@PathVariable Integer id, 
 										  @RequestBody StudentCourse studentCourse) {
 		try {
 			studentCourse.setPkStudentCourse(id);
 			studentCourseService.saveStudentCourse(studentCourse);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<StudentCourse>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

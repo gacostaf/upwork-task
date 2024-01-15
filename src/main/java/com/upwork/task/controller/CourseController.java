@@ -33,27 +33,27 @@ public class CourseController {
 	public ResponseEntity<Course> getCourse(@PathVariable Integer id) {
 		try {
 			Course course = courseService.getCourse(id);
-			return new ResponseEntity<Course>(course, HttpStatus.OK);
+			return new ResponseEntity<>(course, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveCourse(@RequestBody Course course) {
+	public ResponseEntity<Course> saveCourse(@RequestBody Course course) {
 		courseService.saveCourse(course);
 		return new ResponseEntity<>(course, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateCourse(@PathVariable Integer id, 
+	public ResponseEntity<Course> updateCourse(@PathVariable Integer id, 
 										  @RequestBody Course course) {
 		try {
 			course.setPkCourse(id);
 			courseService.saveCourse(course);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}

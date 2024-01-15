@@ -33,27 +33,27 @@ public class LectureController {
 	public ResponseEntity<Lecture> getLecture(@PathVariable Integer id) {
 		try {
 			Lecture lecture = lectureService.getLecture(id);
-			return new ResponseEntity<Lecture>(lecture, HttpStatus.OK);
+			return new ResponseEntity<>(lecture, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Lecture>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<?> saveLecture(@RequestBody Lecture lecture) {
+	public ResponseEntity<Lecture> saveLecture(@RequestBody Lecture lecture) {
 		lectureService.saveLecture(lecture);
 		return new ResponseEntity<>(lecture, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateLecture(@PathVariable Integer id, 
+	public ResponseEntity<Lecture> updateLecture(@PathVariable Integer id, 
 										  @RequestBody Lecture lecture) {
 		try {
 			lecture.setPkLecture(id);
 			lectureService.saveLecture(lecture);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (NoSuchElementException e) {
-			return new ResponseEntity<Lecture>(HttpStatus.NOT_FOUND);			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);			
 		}
 		
 	}
