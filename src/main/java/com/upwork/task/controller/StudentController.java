@@ -40,15 +40,15 @@ public class StudentController {
 	}
 	
 	@PostMapping("/")
-	public void saveStudent(@RequestBody Student student) {
+	public ResponseEntity<?> saveStudent(@RequestBody Student student) {
 		studentService.saveStudent(student);
+		return new ResponseEntity<>(student, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateStudent(@PathVariable Integer id, 
 										  @RequestBody Student student) {
 		try {
-			Student originalUser = studentService.getStudent(id);
 			student.setPkStudent(id);
 			studentService.saveStudent(student);
 			return new ResponseEntity<>(HttpStatus.OK);

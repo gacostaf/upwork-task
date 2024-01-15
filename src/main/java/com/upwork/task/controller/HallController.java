@@ -40,15 +40,15 @@ public class HallController {
 	}
 	
 	@PostMapping("/")
-	public void saveHall(@RequestBody Hall hall) {
+	public ResponseEntity<?> saveHall(@RequestBody Hall hall) {
 		hallService.saveHall(hall);
+		return new ResponseEntity<>(hall, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateHall(@PathVariable Integer id, 
 										  @RequestBody Hall hall) {
 		try {
-			Hall originalUser = hallService.getHall(id);
 			hall.setPkHall(id);
 			hallService.saveHall(hall);
 			return new ResponseEntity<>(HttpStatus.OK);

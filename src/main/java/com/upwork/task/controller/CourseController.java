@@ -40,15 +40,15 @@ public class CourseController {
 	}
 	
 	@PostMapping("/")
-	public void saveCourse(@RequestBody Course course) {
+	public ResponseEntity<?> saveCourse(@RequestBody Course course) {
 		courseService.saveCourse(course);
+		return new ResponseEntity<>(course, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateCourse(@PathVariable Integer id, 
 										  @RequestBody Course course) {
 		try {
-			Course originalUser = courseService.getCourse(id);
 			course.setPkCourse(id);
 			courseService.saveCourse(course);
 			return new ResponseEntity<>(HttpStatus.OK);

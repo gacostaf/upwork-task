@@ -1,8 +1,10 @@
 package com.upwork.task.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 
 import com.upwork.task.model.Hall;
@@ -29,12 +31,17 @@ public class HallService {
 		return hallRepository.findAll();
 	}
 	
-	public Hall getHall(Integer id) {
-		return hallRepository.findById(id).get();
+	public Hall getHall(Integer id) throws NoSuchElementException {
+		Optional<Hall> optHall = hallRepository.findById(id);
+		if (optHall.isEmpty()) {
+			throw new NoSuchElementException();
+		} else {
+			return optHall.get();
+		}
 	}
 	
-	public void saveHall(Hall Hall) {
-		hallRepository.save(Hall);
+	public void saveHall(Hall hall) {
+		hallRepository.save(hall);
 	}
 	
 	public void deleteHall(Integer id) {

@@ -1,8 +1,10 @@
 package com.upwork.task.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 
 import com.upwork.task.model.StudentCourse;
@@ -29,8 +31,13 @@ public class StudentCourseService {
 		return studentCourseRepository.findAll();
 	}
 	
-	public StudentCourse getStudentCourse(Integer id) {
-		return studentCourseRepository.findById(id).get();
+	public StudentCourse getStudentCourse(Integer id) throws NoSuchElementException {
+		Optional<StudentCourse> optStudentCourse = studentCourseRepository.findById(id);
+		if (optStudentCourse.isEmpty()) {
+			throw new NoSuchElementException();
+		} else {
+			return optStudentCourse.get();
+		}	
 	}
 	
 	public void saveStudentCourse(StudentCourse studentStudentCourse) {
