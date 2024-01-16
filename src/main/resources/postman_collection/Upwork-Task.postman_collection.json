@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "3cc5b032-5934-4833-a705-cb378ad1453e",
+		"name": "Upwork-Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2612271"
+	},
+	"item": [
+		{
+			"name": "checkin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"courseId\": \"111\",\r\n    \"hallId\": \"CB-301\",\r\n    \"studentId\":\"1234567\",\r\n    \"checkInDate\": \"2024-01-15 10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkin/course-attendance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkin",
+						"course-attendance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
