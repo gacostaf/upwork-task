@@ -1,9 +1,10 @@
 package com.upwork.task.service;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -46,7 +47,7 @@ class StudentScheduleServiceTest {
 	@Test
 	void saveStudentSchedule_success() {
 		assertDoesNotThrow(() -> {
-			StudentSchedule c =  new StudentSchedule(700, "1234567", "111-01");
+			StudentSchedule c =  new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date());
 			studentScheduleService.saveStudentSchedule(c);
 		});
 		

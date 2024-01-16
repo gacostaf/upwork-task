@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,6 @@ class StudentAttendanceTest {
 	}
 	
 	StudentAttendance getNewStudentAttendance() {
-		return new StudentAttendance(700, "1234567", "111-01", new Date());
+		return new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString());
 	}
 }

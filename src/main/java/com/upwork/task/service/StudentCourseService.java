@@ -1,10 +1,11 @@
 package com.upwork.task.service;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
 
 import com.upwork.task.model.StudentCourse;
@@ -46,5 +47,9 @@ public class StudentCourseService {
 	
 	public void deleteStudentCourse(Integer id) {
 		studentCourseRepository.deleteById(id);
+	}
+	
+	public Collection<StudentCourse> findAllCoursesByStudent(String studentId, String courseId) {
+		return studentCourseRepository.findAllCoursesByStudent(studentId, courseId);
 	}
 } 

@@ -18,7 +18,10 @@ public class StudentAttendance {
 	@Id
 	private int pkStudentAttendance;
 	private String fkIdStudent;
+	private String fkIdCourse;
+	private String fkIdHall;
 	private String fkIdLecture;
 	private Date checkinDatetime;
+	private String idTransaction;
 
 }

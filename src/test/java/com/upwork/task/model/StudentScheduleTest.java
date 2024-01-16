@@ -3,6 +3,8 @@ package com.upwork.task.model;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -25,6 +27,6 @@ class StudentScheduleTest {
 	}
 	
 	StudentSchedule getNewStudentSchedule() {
-		return new StudentSchedule(700, "1234567", "111-01");
+		return new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date());
 	}
 }

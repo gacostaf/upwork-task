@@ -3,6 +3,7 @@ package com.upwork.task.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -33,7 +34,7 @@ class StudentAttendanceControllerTest {
 	   mockMvc.perform(
 				  MockMvcRequestBuilders
 			      .post(BASE_URL + "/")
-			      .content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date())))
+			      .content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString())))
 			      .contentType(MediaType.APPLICATION_JSON)
 			      .accept(MediaType.APPLICATION_JSON));
 		
@@ -55,7 +56,7 @@ class StudentAttendanceControllerTest {
 		this.mockMvc.perform(
 		  MockMvcRequestBuilders
 	      .post(BASE_URL + "/")
-	      .content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date())))
+	      .content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString())))
 	      .contentType(MediaType.APPLICATION_JSON)
 	      .accept(MediaType.APPLICATION_JSON))
 	    .andExpect(status().isCreated());
@@ -72,7 +73,7 @@ class StudentAttendanceControllerTest {
 	   mockMvc.perform(
 				  MockMvcRequestBuilders
 			      .post(BASE_URL + "/")
-			      .content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date())))
+			      .content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString())))
 			      .contentType(MediaType.APPLICATION_JSON)
 			      .accept(MediaType.APPLICATION_JSON));
 			
@@ -89,7 +90,7 @@ class StudentAttendanceControllerTest {
 		   mockMvc.perform(
 					  MockMvcRequestBuilders
 				      .post(BASE_URL + "/")
-				      .content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date())))
+				      .content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString())))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON));
 			
@@ -105,7 +106,7 @@ class StudentAttendanceControllerTest {
 		   mockMvc.perform(
 					  MockMvcRequestBuilders
 				      .post(BASE_URL + "/")
-				      .content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date())))
+				      .content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString())))
 				      .contentType(MediaType.APPLICATION_JSON)
 				      .accept(MediaType.APPLICATION_JSON));
 			
@@ -113,7 +114,7 @@ class StudentAttendanceControllerTest {
 				MockMvcRequestBuilders
 				.put(BASE_URL+"/{id}", 700)
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(asJsonString(new StudentAttendance(700, "1234567", "111-01", new Date()))))
+				.content(asJsonString(new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString()))))
 				.andExpect(status().isOk());		
 	}
 	

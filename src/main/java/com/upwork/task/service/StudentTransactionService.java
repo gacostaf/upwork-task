@@ -47,4 +47,8 @@ public class StudentTransactionService {
 	public void deleteStudentTransaction(Integer id) {
 		studentTransactionRepository.deleteById(id);
 	}
+	
+	public StudentTransaction findStudentTransactionByUUID(String uuid) {
+		return studentTransactionRepository.findStudentTransactionByUUID(uuid);
+	}
 } 

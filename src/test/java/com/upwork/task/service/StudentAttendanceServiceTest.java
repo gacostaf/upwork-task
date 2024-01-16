@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,10 @@ class StudentAttendanceServiceTest {
 	
 	@Test
 	void getStudentAttendance_success() {
+		StudentAttendance ca =  new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString());
+		studentAttendanceService.saveStudentAttendance(ca);
 		assertDoesNotThrow(() -> {
-			StudentAttendance c = studentAttendanceService.getStudentAttendance(1);
+			StudentAttendance c = studentAttendanceService.getStudentAttendance(700);
 			assertNotNull(c);
 		});
 	}
@@ -47,7 +50,7 @@ class StudentAttendanceServiceTest {
 	@Test
 	void saveStudentAttendance_success() {
 		assertDoesNotThrow(() -> {
-			StudentAttendance c =  new StudentAttendance(700, "1234567", "111-01", new Date());
+			StudentAttendance c =  new StudentAttendance(700, "1234567", "111", "CB-301", "111-01", new Date(), UUID.randomUUID().toString());
 			studentAttendanceService.saveStudentAttendance(c);
 		});
 		

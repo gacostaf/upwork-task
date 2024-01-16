@@ -47,4 +47,8 @@ public class StudentAttendanceService {
 	public void deleteStudentAttendance(Integer id) {
 		studentAttendanceRepository.deleteById(id);
 	}
+	
+	public StudentAttendance findAttendanceByIdTransaction(String idTransaction) {
+		return studentAttendanceRepository.findAttendanceByIdTransaction(idTransaction);
+	}
 } 

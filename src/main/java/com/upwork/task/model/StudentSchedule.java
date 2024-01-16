@@ -1,5 +1,7 @@
 package com.upwork.task.model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,6 +18,10 @@ public class StudentSchedule {
 	@Id
 	private int pkStudentSchedule;
 	private String fkIdStudent;
+	private String fkIdCourse;
+	private String fkIdHall;
 	private String fkIdLecture;
+	private Date startDatetime;
+	private Date endDatetime;
 
 }

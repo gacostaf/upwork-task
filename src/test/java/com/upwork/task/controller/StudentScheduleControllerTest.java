@@ -2,6 +2,8 @@ package com.upwork.task.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ class StudentScheduleControllerTest {
 	   mockMvc.perform(
 				  MockMvcRequestBuilders
 			      .post(BASE_URL + "/")
-			      .content(asJsonString(new StudentSchedule(700, "1234567", "111-01")))
+			      .content(asJsonString(new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date())))
 			      .contentType(MediaType.APPLICATION_JSON)
 			      .accept(MediaType.APPLICATION_JSON));
 		
@@ -53,7 +55,7 @@ class StudentScheduleControllerTest {
 		this.mockMvc.perform(
 		  MockMvcRequestBuilders
 	      .post(BASE_URL + "/")
-	      .content(asJsonString(new StudentSchedule(700, "1234567", "111-01")))
+	      .content(asJsonString(new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date())))
 	      .contentType(MediaType.APPLICATION_JSON)
 	      .accept(MediaType.APPLICATION_JSON))
 	    .andExpect(status().isCreated());
@@ -80,7 +82,7 @@ class StudentScheduleControllerTest {
 	   mockMvc.perform(
 				  MockMvcRequestBuilders
 			      .post(BASE_URL + "/")
-			      .content(asJsonString(new StudentSchedule(700, "1234567", "111-01")))
+			      .content(asJsonString(new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date())))
 			      .contentType(MediaType.APPLICATION_JSON)
 			      .accept(MediaType.APPLICATION_JSON));
 		
@@ -96,7 +98,7 @@ class StudentScheduleControllerTest {
 	   mockMvc.perform(
 				  MockMvcRequestBuilders
 			      .post(BASE_URL + "/")
-			      .content(asJsonString(new StudentSchedule(700, "1234567", "111-01")))
+			      .content(asJsonString(new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date())))
 			      .contentType(MediaType.APPLICATION_JSON)
 			      .accept(MediaType.APPLICATION_JSON));
 			
@@ -104,7 +106,7 @@ class StudentScheduleControllerTest {
 				MockMvcRequestBuilders
 				.put(BASE_URL+"/{id}", 700)
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(asJsonString(new StudentSchedule(700, "1234567", "111-01"))))
+				.content(asJsonString(new StudentSchedule(700, "1234567", "111", "CB-301", "111-01", new Date(), new Date()))))
 				.andExpect(status().isOk());		
 	}
 	
