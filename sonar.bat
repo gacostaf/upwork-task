@@ -1,0 +1,1 @@
+mvn clean verify sonar:sonar  -Dsonar.projectKey=upwork-task   -Dsonar.projectName='upwork-task'   -Dsonar.host.url=http://localhost:9000  -Dsonar.token=sqp_e9589a5dee460d3dc61dae868c6a07ad5b0671c7 
